@@ -1,0 +1,79 @@
+{
+  "years": [
+    {
+      "year": "2012",
+      "meetings": 2,
+      "file": "transcripts-2012.json"
+    },
+    {
+      "year": "2013",
+      "meetings": 3,
+      "file": "transcripts-2013.json"
+    },
+    {
+      "year": "2014",
+      "meetings": 3,
+      "file": "transcripts-2014.json"
+    },
+    {
+      "year": "2015",
+      "meetings": 14,
+      "file": "transcripts-2015.json"
+    },
+    {
+      "year": "2016",
+      "meetings": 6,
+      "file": "transcripts-2016.json"
+    },
+    {
+      "year": "2017",
+      "meetings": 2,
+      "file": "transcripts-2017.json"
+    },
+    {
+      "year": "2018",
+      "meetings": 8,
+      "file": "transcripts-2018.json"
+    },
+    {
+      "year": "2019",
+      "meetings": 10,
+      "file": "transcripts-2019.json"
+    },
+    {
+      "year": "2020",
+      "meetings": 16,
+      "file": "transcripts-2020.json"
+    },
+    {
+      "year": "2021",
+      "meetings": 20,
+      "file": "transcripts-2021.json"
+    },
+    {
+      "year": "2022",
+      "meetings": 19,
+      "file": "transcripts-2022.json"
+    },
+    {
+      "year": "2023",
+      "meetings": 35,
+      "file": "transcripts-2023.json"
+    },
+    {
+      "year": "2024",
+      "meetings": 28,
+      "file": "transcripts-2024.json"
+    },
+    {
+      "year": "2025",
+      "meetings": 28,
+      "file": "transcripts-2025.json"
+    },
+    {
+      "year": "2026",
+      "meetings": 15,
+      "file": "transcripts-2026.json"
+    }
+  ]
+}
