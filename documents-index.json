@@ -1,0 +1,16 @@
+{
+  "years": [
+    { "year": "2012", "documents": 33, "file": "documents-2012.json" },
+    { "year": "2013", "documents": 196, "file": "documents-2013.json" },
+    { "year": "2014", "documents": 213, "file": "documents-2014.json" },
+    { "year": "2015", "documents": 213, "file": "documents-2015.json" },
+    { "year": "2016", "documents": 270, "file": "documents-2016.json" },
+    { "year": "2017", "documents": 224, "file": "documents-2017.json" },
+    { "year": "2018", "documents": 284, "file": "documents-2018.json" },
+    { "year": "2019", "documents": 313, "file": "documents-2019.json" },
+    { "year": "2020", "documents": 250, "file": "documents-2020.json" },
+    { "year": "2021", "documents": 327, "file": "documents-2021.json" },
+    { "year": "2022", "documents": 327, "file": "documents-2022.json" },
+    { "year": "2023", "documents": 386, "file": "documents-2023.json" }
+  ]
+}
