@@ -66,18 +66,26 @@ One file per year, `{"documents": [...]}`, where each entry is a single
 
 | Years | Status |
 |---|---|
-| 2012–2023 | Index only (id/type/date/title/source_url), no body text |
-| 2024–2026 | Full index (resolutions + ordinances) + partial full text — see below |
+| 2012–2026 | Full index (resolutions + ordinances) + partial full text — see below |
 | 2010–2011 | Exists on the site under separate Archive Center categories ("Township Council Resolutions- 2010/2011") but hasn't been scraped |
 
-For 2024–2026, full text was extracted directly from each meeting's combined
+For all years, full text was extracted directly from each meeting's combined
 Packet PDF via a page-anchor heuristic (each resolution/ordinance's cover
 page reliably starts with `"{id} {date} RESOLUTION|ORDINANCE"`). This
-catches roughly 20–30% of records per year — mainly self-contained
+catches roughly 20–40% of records per year — mainly self-contained
 resolutions. The rest (exhibits, budget tables, attachments without a
 standard cover page, or packets too large to safely parse in-browser) stay
-index-only rather than risk mis-attributing text to the wrong record. A
-2012–2023 backfill using the same method is still outstanding.
+index-only rather than risk mis-attributing text to the wrong record.
+
+2012–2023 was rebuilt on 2026-07-21 using the same AgendaCenter pipeline as
+2024–2026 (previously it was index-only, built via an older/rougher method
+against a different source). See `EXTRACTION-STATUS-2012-2023.md` for
+per-year before/after counts. Note 2012 is a genuine exception: it dropped
+from 33 to 16 records because the AgendaCenter category only has 11 meeting
+packets for that year (West Orange's site coverage is thin that far back);
+the old 33-record file likely pulled from the separate Archive Center path,
+which this rebuild deliberately did not use (see extraction status file for
+detail).
 
 Ordinance ids in the 2024+ AgendaCenter packets use a different numbering
 series than resolutions (4-digit, e.g. `2834-24`, vs. resolutions' 1–3
