@@ -11,6 +11,9 @@
     { "year": "2020", "documents": 250, "file": "documents-2020.json" },
     { "year": "2021", "documents": 327, "file": "documents-2021.json" },
     { "year": "2022", "documents": 327, "file": "documents-2022.json" },
-    { "year": "2023", "documents": 386, "file": "documents-2023.json" }
+    { "year": "2023", "documents": 386, "file": "documents-2023.json" },
+    { "year": "2024", "documents": 488, "file": "documents-2024.json" },
+    { "year": "2025", "documents": 423, "file": "documents-2025.json" },
+    { "year": "2026", "documents": 291, "file": "documents-2026.json" }
   ]
 }

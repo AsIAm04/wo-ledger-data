@@ -54,29 +54,45 @@ One file per year, `{"documents": [...]}`, where each entry is a single
   item was pulled from, not a standalone per-resolution page — West Orange
   doesn't host individually numbered resolution PDFs. See "known gaps"
   below.
-- **No `pages`/body text yet** for these files — this is currently a
-  title/date/number index only, not full text. A separate pass adds a
-  `pages` array (same shape as `transcripts.json`'s) once the full
-  resolution/ordinance text has been extracted from each meeting's combined
-  Packet PDF.
+- `pages` (optional) — present only where full text has been extracted from
+  the meeting's combined Packet PDF; same shape as `transcripts.json`'s
+  (`[{"page": N, "text": "..."}]`, page numbers are the record's own page
+  range within that meeting's packet, not the meeting's absolute page
+  count). Records without `pages` are index-only (id/date/title/source_url)
+  — the site falls back to title-only display for these, no code changes
+  needed if `pages` gets backfilled later.
 
 ### Coverage / known gaps (as of this writing)
 
 | Years | Status |
 |---|---|
 | 2012–2023 | Index only (id/type/date/title/source_url), no body text |
-| 2024–2026 | Not yet built |
+| 2024–2026 | Full index (resolutions + ordinances) + partial full text — see below |
 | 2010–2011 | Exists on the site under separate Archive Center categories ("Township Council Resolutions- 2010/2011") but hasn't been scraped |
 
-A scheduled job is in progress to backfill full `pages` text for 2012–2026
-and add 2024–2026 from scratch, reusing this same file naming
-(`documents-YYYY.json`) and appending a `pages` array to each existing
-record rather than restructuring the schema.
+For 2024–2026, full text was extracted directly from each meeting's combined
+Packet PDF via a page-anchor heuristic (each resolution/ordinance's cover
+page reliably starts with `"{id} {date} RESOLUTION|ORDINANCE"`). This
+catches roughly 20–30% of records per year — mainly self-contained
+resolutions. The rest (exhibits, budget tables, attachments without a
+standard cover page, or packets too large to safely parse in-browser) stay
+index-only rather than risk mis-attributing text to the wrong record. A
+2012–2023 backfill using the same method is still outstanding.
+
+Ordinance ids in the 2024+ AgendaCenter packets use a different numbering
+series than resolutions (4-digit, e.g. `2834-24`, vs. resolutions' 1–3
+digit `NNN-YY`) — `type` is classified by that numeric threshold (≥1000 =
+Ordinance) rather than by section-header text, which proved unreliable
+against the packet's own formatting.
 
 ### Duplicate ids
 
-A small number of resolution numbers appear referenced across more than one
-meeting date in the source site (e.g. carried over from introduction to
-final adoption). Where that happened, only the first-scraped occurrence
-(by the site's own newest-meeting-first ordering) was kept per year — so
-each `id` appears at most once within a given year's file.
+A small number of resolution/ordinance numbers appear referenced across more
+than one meeting date in the source site (e.g. carried over from
+introduction to final adoption, or a follow-up report filed under the same
+number). For 2012–2023, only the first-scraped occurrence (by the site's
+newest-meeting-first ordering) was kept per year, so each `id` appears at
+most once within those years' files. 2024–2026 does **not** dedupe across
+meetings — both occurrences are kept as separate records, since collapsing
+them risked losing the follow-up context. Worth reconciling in a future
+pass if consistency across all years matters.
