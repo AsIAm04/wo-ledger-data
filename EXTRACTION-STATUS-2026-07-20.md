@@ -12,7 +12,7 @@ No packet PDFs could be downloaded or parsed. No documents-*.json files were mod
 
 ## Existing state (verified, unchanged)
 
-`/Users/dasiama1/Downloads/wo-ledger-data/` contains:
+`~/Downloads/wo-ledger-data/` contains:
 - `documents-2012.json` through `documents-2023.json` — index-only records (`id`, `type`, `date`, `title`, `source_url`). No `pages`/full-text yet.
 - `documents-index.json`
 - No files yet for 2024, 2025, or 2026.
