@@ -67,7 +67,28 @@ One file per year, `{"documents": [...]}`, where each entry is a single
 | Years | Status |
 |---|---|
 | 2012–2026 | Full index (resolutions + ordinances) + partial full text — see below |
-| 2010–2011 | Exists on the site under separate Archive Center categories ("Township Council Resolutions- 2010/2011") but hasn't been scraped |
+| 2010–2011 | Full index + full text for every record — see below (added 2026-08) |
+
+2010–2011 comes from a different part of the site than 2012+: the separate
+Archive Center categories ("Township Council Resolutions- 2010" /
+"...- 2011", `Archive.aspx?AMID=47` / `AMID=46`), where — unlike the
+AgendaCenter packet years — every resolution/ordinance is its own
+individually-hosted PDF (`ArchiveCenter/ViewFile/Item/{ADID}`). Because of
+that, **every 2010/2011 record has `pages` (full text)** — there was no
+packet to fail to match against, just one small PDF per record. `id`/`date`/
+`title`/`type` were parsed from each PDF's own cover-page line (same
+`"{id} {date} RESOLUTION|ORDINANCE {title}"` pattern as 2012+, tolerant of
+several older-era formatting quirks: OCR-spaced-out letters/digits,
+"A RESOLUTION" vs "RESOLUTION", title-before-keyword ordering, and a
+`"Resolution # {id} Adopted {date}"` variant). This caught title+date
+confidently for ~72–81% of records per year; the rest have a `title` of
+`""` and a `date` inferred from the item's position in the Archive Center's
+meeting-grouped listing (`dateSource: "list-position-fallback"` or
+`"neighbor-block-fallback"` on those records) rather than from the PDF
+itself — worth a second pass if per-record precision on those matters later.
+2010–2011 predates ordinance/resolution numbering conventions changing, so
+`type` is classified by the cover page's own RESOLUTION/ORDINANCE keyword,
+not by id magnitude.
 
 For all years, full text was extracted directly from each meeting's combined
 Packet PDF via a page-anchor heuristic (each resolution/ordinance's cover
